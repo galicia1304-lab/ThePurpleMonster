@@ -1,104 +1,88 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController2D : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float jumpForce = 5f;
-    private Rigidbody2D rb;
-    private Animator anim;
-    private Vector3 startPosition;
-    private bool isGrounded = true;
-    private bool isDead = false; 
-    private bool isWalking = false;
+    public Animator animator;
+    public Rigidbody2D rb;
+    public Transform startPoint;
 
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        startPosition = transform.position;
-    }
+    [Header("Movement Settings")]
+    public float walkSpeed = 4f;
+    public float runSpeed = 7f;
+    public float jumpForce = 10f;
+
+    private bool facingRight = true;
+    private bool isDead = false;
 
     void Update()
     {
-        float move = Input.GetAxis("Horizontal");
-        bool jump = Input.GetButtonDown("Jump");
-        bool fight = Input.GetKeyDown(KeyCode.F);
+        if (isDead) return;
 
-        // Movement
-        rb.linearVelocity = new Vector2(move * moveSpeed, rb.linearVelocity.y);
+        // --- Movement Input ---
+        float moveInput = 0f;
+        if (Input.GetKey(KeyCode.A))
+            moveInput = -1f;
+        if (Input.GetKey(KeyCode.D))
+            moveInput = 1f;
 
-        // Flip character
-        if (move != 0)
-            transform.localScale = new Vector3(Mathf.Sign(move), 1, 1);
+        // --- Walking & Running ---
+        bool isRunning = Input.GetKey(KeyCode.LeftShift);
+        float speed = isRunning ? runSpeed : walkSpeed;
 
-        // Set animation states
-        anim.SetBool("isRunning", move != 0);
-        anim.SetBool("isJumping", !isGrounded);
-        anim.SetBool("isFighting", fight);
+        // Move instantly with no delay
+        rb.linearVelocity = new Vector2(moveInput * speed, rb.linearVelocity.y);
 
-        // Jump
-        if (jump && isGrounded)
+        // --- Flip Character ---
+        if (moveInput > 0 && !facingRight)
+            Flip();
+        else if (moveInput < 0 && facingRight)
+            Flip();
+
+        // --- Set Animations ---
+        animator.SetBool("isWalking", moveInput != 0 && !isRunning);
+        animator.SetBool("isRunning", moveInput != 0 && isRunning);
+
+        // --- Jump (no ground check, always jump when pressing space) ---
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            isGrounded = false;
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            animator.SetBool("isJumping", true);
         }
 
-        // Walking state detection
-        if (isWalking != (move != 0))
+        // Reset jump animation when falling down
+        if (rb.linearVelocity.y == 0)
         {
-            isWalking = (move != 0);
-            if (isWalking)
-            {
-                Debug.Log("Player started walking.");
-            }
-            else
-            {
-                Debug.Log("Player stopped walking.");
-            }
+            animator.SetBool("isJumping", false);
         }
 
-        // Death trigger (press K)
+        // --- Death ---
         if (Input.GetKeyDown(KeyCode.K))
         {
             Die();
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void Flip()
     {
-        if (collision.contacts[0].normal.y > 0.5f)
-        {
-            isGrounded = true;
-        }
+        facingRight = !facingRight;
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 
     void Die()
     {
         isDead = true;
-        anim.SetBool("isDead", true);
-
-        // Stop movement immediately
+        animator.SetBool("isDead", true);
         rb.linearVelocity = Vector2.zero;
-
-        // Wait for 2 seconds (death animation) then respawn
-        Invoke(nameof(Respawn), 2f);
+        Invoke("Respawn", 1f);
     }
 
     void Respawn()
     {
-        // Reset death state
         isDead = false;
-
-        // Move back to start
-        transform.position = startPosition;
-
-        // Reset animator states
-        anim.SetBool("isDead", false);
-        anim.SetBool("isRunning", false);
-        anim.SetBool("isJumping", false);
-        anim.SetBool("isFighting", false);
-
-        // Force Idle state
-        anim.Play("Idle");  // <<-- This line ensures it goes back to idle
+        animator.SetBool("isDead", false);
+        transform.position = startPoint.position;
+        animator.Play("Idle");
     }
 }
