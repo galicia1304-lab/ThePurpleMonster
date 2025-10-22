@@ -8,7 +8,8 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private Vector3 startPosition;
     private bool isGrounded = true;
-    private bool isDead = false;    
+    private bool isDead = false; 
+    private bool isWalking = false;
 
     void Start()
     {
@@ -40,6 +41,20 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             isGrounded = false;
+        }
+
+        // Walking state detection
+        if (isWalking != (move != 0))
+        {
+            isWalking = (move != 0);
+            if (isWalking)
+            {
+                Debug.Log("Player started walking.");
+            }
+            else
+            {
+                Debug.Log("Player stopped walking.");
+            }
         }
 
         // Death trigger (press K)
