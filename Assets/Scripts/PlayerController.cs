@@ -17,13 +17,13 @@ public class PlayerController2D : MonoBehaviour
     private int currentLives;
 
     [Header("UI")]
-    public Image[] hearts; // Assign heart sprites in order in the Inspector
+    public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
     [Header("Coin Settings")]
     public int coinCount = 0;
-    public Text coinText; // Optional: UI Text to show coin count
+    public Text coinText;
 
     private bool facingRight = true;
     private bool isDead = false;
@@ -39,30 +39,25 @@ public class PlayerController2D : MonoBehaviour
     {
         if (isDead) return;
 
-        // --- Movement Input ---
+        // Movement Input
         float moveInput = 0f;
-        if (Input.GetKey(KeyCode.A))
-            moveInput = -1f;
-        if (Input.GetKey(KeyCode.D))
-            moveInput = 1f;
+        if (Input.GetKey(KeyCode.A)) moveInput = -1f;
+        if (Input.GetKey(KeyCode.D)) moveInput = 1f;
 
-        // --- Walking & Running ---
+        // Walking & Running
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
         float speed = isRunning ? runSpeed : walkSpeed;
-
         rb.linearVelocity = new Vector2(moveInput * speed, rb.linearVelocity.y);
 
-        // --- Flip Character ---
-        if (moveInput > 0 && !facingRight)
-            Flip();
-        else if (moveInput < 0 && facingRight)
-            Flip();
+        // Flip Character
+        if (moveInput > 0 && !facingRight) Flip();
+        else if (moveInput < 0 && facingRight) Flip();
 
-        // --- Set Animations ---
+        // Set Animations
         animator.SetBool("isWalking", moveInput != 0 && !isRunning);
         animator.SetBool("isRunning", moveInput != 0 && isRunning);
 
-        // --- Jump ---
+        // Jump
         if (Input.GetKeyDown(KeyCode.Space))
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
@@ -72,7 +67,7 @@ public class PlayerController2D : MonoBehaviour
         if (rb.linearVelocity.y == 0)
             animator.SetBool("isJumping", false);
 
-        // --- Manual Death Test Key ---
+        // Manual Death Test Key
         if (Input.GetKeyDown(KeyCode.K))
             TakeDamage();
     }
@@ -88,18 +83,14 @@ public class PlayerController2D : MonoBehaviour
     // --- DAMAGE & LIVES ---
     public void TakeDamage()
     {
-        if (isDead) return; // <<< prevent hit while dead
+        if (isDead) return;
 
         currentLives--;
         UpdateHeartsUI();
 
-        if (currentLives <= 3)
+        if (currentLives <= 0)
         {
             Die();
-        }
-        else
-        {
-            animator.SetTrigger("isHit");
         }
     }
 
@@ -108,12 +99,8 @@ public class PlayerController2D : MonoBehaviour
         if (isDead) return;
 
         isDead = true;
-
-        // Clear the hit trigger to avoid animation conflicts
-        animator.ResetTrigger("isHit");
-
         animator.SetBool("isDead", true);
-        rb.linearVelocity = Vector2.zero; // linearVelocity is deprecated in new Unity versions
+        rb.linearVelocity = Vector2.zero;
         rb.simulated = false;
 
         Invoke(nameof(Respawn), 1f);
@@ -121,24 +108,18 @@ public class PlayerController2D : MonoBehaviour
 
     void Respawn()
     {
-        // Reset player
         isDead = false;
         animator.SetBool("isDead", false);
         animator.Play("Idle");
 
-        // Move back to start point
         transform.position = startPoint.position;
-
-        // Re-enable physics and controls
         rb.simulated = true;
 
-        // Reset lives if needed
         currentLives = maxLives;
         UpdateHeartsUI();
     }
 
-
-    // --- COIN PICKUP ---
+    // --- TRIGGERS ---
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Thorn"))
@@ -158,10 +139,7 @@ public class PlayerController2D : MonoBehaviour
     {
         for (int i = 0; i < hearts.Length; i++)
         {
-            if (i < currentLives)
-                hearts[i].sprite = fullHeart;
-            else
-                hearts[i].sprite = emptyHeart;
+            hearts[i].sprite = i < currentLives ? fullHeart : emptyHeart;
         }
     }
 
