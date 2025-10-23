@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController2D : MonoBehaviour
 {
@@ -11,8 +12,28 @@ public class PlayerController2D : MonoBehaviour
     public float runSpeed = 7f;
     public float jumpForce = 10f;
 
+    [Header("Player Stats")]
+    public int maxLives = 3;
+    private int currentLives;
+
+    [Header("UI")]
+    public Image[] hearts; // Assign heart sprites in order in the Inspector
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
+
+    [Header("Coin Settings")]
+    public int coinCount = 0;
+    public Text coinText; // Optional: UI Text to show coin count
+
     private bool facingRight = true;
     private bool isDead = false;
+
+    void Start()
+    {
+        currentLives = maxLives;
+        UpdateHeartsUI();
+        UpdateCoinUI();
+    }
 
     void Update()
     {
@@ -29,7 +50,6 @@ public class PlayerController2D : MonoBehaviour
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
         float speed = isRunning ? runSpeed : walkSpeed;
 
-        // Move instantly with no delay
         rb.linearVelocity = new Vector2(moveInput * speed, rb.linearVelocity.y);
 
         // --- Flip Character ---
@@ -42,24 +62,19 @@ public class PlayerController2D : MonoBehaviour
         animator.SetBool("isWalking", moveInput != 0 && !isRunning);
         animator.SetBool("isRunning", moveInput != 0 && isRunning);
 
-        // --- Jump (no ground check, always jump when pressing space) ---
+        // --- Jump ---
         if (Input.GetKeyDown(KeyCode.Space))
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             animator.SetBool("isJumping", true);
         }
 
-        // Reset jump animation when falling down
         if (rb.linearVelocity.y == 0)
-        {
             animator.SetBool("isJumping", false);
-        }
 
-        // --- Death ---
+        // --- Manual Death Test Key ---
         if (Input.GetKeyDown(KeyCode.K))
-        {
-            Die();
-        }
+            TakeDamage();
     }
 
     void Flip()
@@ -70,19 +85,90 @@ public class PlayerController2D : MonoBehaviour
         transform.localScale = scale;
     }
 
+    // --- DAMAGE & LIVES ---
+    public void TakeDamage()
+    {
+        if (isDead) return; // <<< prevent hit while dead
+
+        currentLives--;
+        UpdateHeartsUI();
+
+        if (currentLives <= 3)
+        {
+            Die();
+        }
+        else
+        {
+            animator.SetTrigger("isHit");
+        }
+    }
+
     void Die()
     {
+        if (isDead) return;
+
         isDead = true;
+
+        // Clear the hit trigger to avoid animation conflicts
+        animator.ResetTrigger("isHit");
+
         animator.SetBool("isDead", true);
-        rb.linearVelocity = Vector2.zero;
-        Invoke("Respawn", 1f);
+        rb.linearVelocity = Vector2.zero; // linearVelocity is deprecated in new Unity versions
+        rb.simulated = false;
+
+        Invoke(nameof(Respawn), 1f);
     }
 
     void Respawn()
     {
+        // Reset player
         isDead = false;
         animator.SetBool("isDead", false);
-        transform.position = startPoint.position;
         animator.Play("Idle");
+
+        // Move back to start point
+        transform.position = startPoint.position;
+
+        // Re-enable physics and controls
+        rb.simulated = true;
+
+        // Reset lives if needed
+        currentLives = maxLives;
+        UpdateHeartsUI();
+    }
+
+
+    // --- COIN PICKUP ---
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Thorn"))
+        {
+            TakeDamage();
+        }
+        else if (collision.CompareTag("Heart"))
+        {
+            coinCount++;
+            UpdateCoinUI();
+            Destroy(collision.gameObject);
+        }
+    }
+
+    // --- UI UPDATES ---
+    void UpdateHeartsUI()
+    {
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < currentLives)
+                hearts[i].sprite = fullHeart;
+            else
+                hearts[i].sprite = emptyHeart;
+        }
+    }
+
+    void UpdateCoinUI()
+    {
+        if (coinText != null)
+            coinText.text = "Coins: " + coinCount;
     }
 }
+
