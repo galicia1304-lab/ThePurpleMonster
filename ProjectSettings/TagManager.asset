@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Heart
+  - Hazard
   layers:
   - Default
   - TransparentFX

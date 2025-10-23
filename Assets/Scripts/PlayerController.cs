@@ -28,6 +28,10 @@ public class PlayerController2D : MonoBehaviour
     private bool facingRight = true;
     private bool isDead = false;
 
+    private bool invincible = false;           // Tracks temporary invincibility
+    public float invincibleTime = 0.5f;        // Duration of invincibility after taking damage
+
+
     void Start()
     {
         currentLives = maxLives;
@@ -83,16 +87,18 @@ public class PlayerController2D : MonoBehaviour
     // --- DAMAGE & LIVES ---
     public void TakeDamage()
     {
-        if (isDead) return;
+        if (isDead || invincible) return;   // Ignore damage if dead or invincible
 
         currentLives--;
         UpdateHeartsUI();
 
         if (currentLives <= 0)
         {
-            Die();
+            Die();                           // Instantly die if lives reach 0
         }
+
     }
+
 
     void Die()
     {
@@ -103,8 +109,14 @@ public class PlayerController2D : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         rb.simulated = false;
 
-        Invoke(nameof(Respawn), 1f);
+        // Player can�t take damage or move now
+        currentLives = 3; // immediately mark as dead
+        UpdateHeartsUI();
+
+        // Optional: respawn after a short delay
+        Invoke(nameof(Respawn), 0.5f); // shorter delay
     }
+
 
     void Respawn()
     {
@@ -122,7 +134,7 @@ public class PlayerController2D : MonoBehaviour
     // --- TRIGGERS ---
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Thorn"))
+        if (collision.CompareTag("Hazard"))
         {
             TakeDamage();
         }
