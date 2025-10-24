@@ -5,7 +5,8 @@ public class PlayerController2D : MonoBehaviour
 {
     public Animator animator;
     public Rigidbody2D rb;
-    public Transform startPoint;
+    public Transform startPoint; // starting point of the level
+    public Transform respawnPoint; // last checkpoint (can be same as start initially)
 
     [Header("Movement Settings")]
     public float walkSpeed = 4f;
@@ -13,13 +14,17 @@ public class PlayerController2D : MonoBehaviour
     public float jumpForce = 10f;
 
     [Header("Player Stats")]
-    public int maxLives = 3;
+    public int maxHearts = 3;   // hearts per life
+    private int currentHearts;
+
+    public int maxLives = 3;    // total lives before restart
     private int currentLives;
 
     [Header("UI")]
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
+    public Text livesText;
 
     [Header("Coin Settings")]
     public int coinCount = 0;
@@ -27,15 +32,17 @@ public class PlayerController2D : MonoBehaviour
 
     private bool facingRight = true;
     private bool isDead = false;
-
-    private bool invincible = false;           // Tracks temporary invincibility
-    public float invincibleTime = 0.5f;        // Duration of invincibility after taking damage
+    private bool invincible = false;
+    public float invincibleTime = 0.5f;
 
 
     void Start()
     {
+        currentHearts = maxHearts;
         currentLives = maxLives;
+        respawnPoint = startPoint; // initial respawn = start
         UpdateHeartsUI();
+        UpdateLivesUI();
         UpdateCoinUI();
     }
 
@@ -43,25 +50,20 @@ public class PlayerController2D : MonoBehaviour
     {
         if (isDead) return;
 
-        // Movement Input
         float moveInput = 0f;
         if (Input.GetKey(KeyCode.A)) moveInput = -1f;
         if (Input.GetKey(KeyCode.D)) moveInput = 1f;
 
-        // Walking & Running
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
         float speed = isRunning ? runSpeed : walkSpeed;
         rb.linearVelocity = new Vector2(moveInput * speed, rb.linearVelocity.y);
 
-        // Flip Character
         if (moveInput > 0 && !facingRight) Flip();
         else if (moveInput < 0 && facingRight) Flip();
 
-        // Set Animations
         animator.SetBool("isWalking", moveInput != 0 && !isRunning);
         animator.SetBool("isRunning", moveInput != 0 && isRunning);
 
-        // Jump
         if (Input.GetKeyDown(KeyCode.Space))
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
@@ -71,7 +73,7 @@ public class PlayerController2D : MonoBehaviour
         if (rb.linearVelocity.y == 0)
             animator.SetBool("isJumping", false);
 
-        // Manual Death Test Key
+        // Manual damage test key
         if (Input.GetKeyDown(KeyCode.K))
             TakeDamage();
     }
@@ -87,18 +89,27 @@ public class PlayerController2D : MonoBehaviour
     // --- DAMAGE & LIVES ---
     public void TakeDamage()
     {
-        if (isDead || invincible) return;   // Ignore damage if dead or invincible
+        if (isDead || invincible) return;
 
-        currentLives--;
+        currentHearts--;
         UpdateHeartsUI();
 
-        if (currentLives <= 0)
+        if (currentHearts <= 0)
         {
-            Die();                           // Instantly die if lives reach 0
+            Die();
         }
-
+        else
+        {
+            StartCoroutine(InvincibilityCoroutine());
+        }
     }
 
+    System.Collections.IEnumerator InvincibilityCoroutine()
+    {
+        invincible = true;
+        yield return new WaitForSeconds(invincibleTime);
+        invincible = false;
+    }
 
     void Die()
     {
@@ -109,14 +120,13 @@ public class PlayerController2D : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         rb.simulated = false;
 
-        // Player can�t take damage or move now
-        currentLives = 3; // immediately mark as dead
-        UpdateHeartsUI();
+        // Lose one life
+        currentLives--;
+        UpdateLivesUI();
 
-        // Optional: respawn after a short delay
-        Invoke(nameof(Respawn), 0.5f); // shorter delay
+        // Respawn after short delay
+        Invoke(nameof(Respawn), 1.0f);
     }
-
 
     void Respawn()
     {
@@ -124,14 +134,28 @@ public class PlayerController2D : MonoBehaviour
         animator.SetBool("isDead", false);
         animator.Play("Idle");
 
-        transform.position = startPoint.position;
         rb.simulated = true;
 
-        currentLives = maxLives;
-        UpdateHeartsUI();
+        if (currentLives > 0)
+        {
+            // Respawn at the last checkpoint
+            transform.position = respawnPoint.position;
+            currentHearts = maxHearts;
+            UpdateHeartsUI();
+        }
+        else
+        {
+            // Out of lives → restart from the beginning
+            currentLives = maxLives;
+            transform.position = startPoint.position;
+            respawnPoint = startPoint;
+            currentHearts = maxHearts;
+            UpdateHeartsUI();
+            UpdateLivesUI();
+        }
     }
 
-    // --- TRIGGERS ---
+    // --- COLLISIONS ---
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Hazard"))
@@ -144,6 +168,11 @@ public class PlayerController2D : MonoBehaviour
             UpdateCoinUI();
             Destroy(collision.gameObject);
         }
+        else if (collision.CompareTag("Checkpoint"))
+        {
+            // Update the current respawn point
+            respawnPoint = collision.transform;
+        }
     }
 
     // --- UI UPDATES ---
@@ -151,8 +180,14 @@ public class PlayerController2D : MonoBehaviour
     {
         for (int i = 0; i < hearts.Length; i++)
         {
-            hearts[i].sprite = i < currentLives ? fullHeart : emptyHeart;
+            hearts[i].sprite = i < currentHearts ? fullHeart : emptyHeart;
         }
+    }
+
+    void UpdateLivesUI()
+    {
+        if (livesText != null)
+            livesText.text = ": " + currentLives;
     }
 
     void UpdateCoinUI()
@@ -161,4 +196,3 @@ public class PlayerController2D : MonoBehaviour
             coinText.text = "Coins: " + coinCount;
     }
 }
-
