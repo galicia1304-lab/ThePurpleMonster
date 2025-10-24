@@ -1182,7 +1182,7 @@ GameObject:
   m_Component:
   - component: {fileID: 169504003}
   m_Layer: 0
-  m_Name: CheckPoint
+  m_Name: CheckPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1736,10 +1736,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 790429030}
+  - {fileID: 169504003}
   - {fileID: 1272747379}
   - {fileID: 1944060486}
   - {fileID: 52746158}
-  - {fileID: 169504003}
   m_Father: {fileID: 906107808}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &466602847
