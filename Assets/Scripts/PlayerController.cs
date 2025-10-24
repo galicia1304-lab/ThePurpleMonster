@@ -175,7 +175,7 @@ public class PlayerController2D : MonoBehaviour
         }
     }
 
-    // --- UI UPDATES ---
+    // --- UI ---
     void UpdateHeartsUI()
     {
         for (int i = 0; i < hearts.Length; i++)
