@@ -59,8 +59,8 @@ public class PortalExitManager : MonoBehaviour
         );
 
         // Spawn portal behind the spaceship
-        Vector3 portalPos = exitPos - Camera.main.transform.forward * 2f;
-        Vector3 shipPos = exitPos + Camera.main.transform.forward * 2f;
+        Vector3 portalPos = exitPos - Camera.main.transform.forward * 2f + Vector3.up * 2f;
+        Vector3 shipPos = exitPos + Camera.main.transform.forward * 2f + Vector3.up * 2f;
 
         portalInstance = Instantiate(portalPrefab, portalPos, Quaternion.identity);
         spaceshipInstance = Instantiate(spaceshipPrefab, shipPos, Quaternion.identity);
@@ -73,21 +73,17 @@ public class PortalExitManager : MonoBehaviour
     {
         if (portal == null) yield break;
 
-        Vector3 startPos = portal.transform.position; // portal = PortalPrefabSpaceship
-        Vector3 endPos = startPos + new Vector3(0, 10f, 0); // move up
+        Vector3 startPos = portal.transform.position;
+        Vector3 endPos = startPos - Camera.main.transform.right * 10f; // or use .right for sideways motion
 
         float elapsed = 0f;
 
         while (elapsed < portalDisappearTime)
         {
-            if (portal == null) yield break;
-
             elapsed += Time.deltaTime;
             float t = elapsed / portalDisappearTime;
             t = t * t * (3f - 2f * t); // smoothstep easing
-
             portal.transform.position = Vector3.Lerp(startPos, endPos, t);
-
             yield return null;
         }
 
