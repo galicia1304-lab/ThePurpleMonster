@@ -728,7 +728,7 @@ Transform:
   m_GameObject: {fileID: 1003679337}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.894146, y: 1.234799, z: -0.08949342}
+  m_LocalPosition: {x: 9.94, y: 1.234799, z: -0.08949342}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -746,7 +746,7 @@ GameObject:
   - component: {fileID: 1086847325}
   m_Layer: 0
   m_Name: SpawnerStones
-  m_TagString: Hazard
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -763,10 +763,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eb1b33208f8a424e83c84891eecd628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3018756947663632541, guid: ef396a74dd648f445bd86bb034242c2f, type: 3}
+  stonePrefab: {fileID: 7749711422268085120, guid: ef396a74dd648f445bd86bb034242c2f, type: 3}
   spawnRate: 2
-  minHeight: -2
-  maxHeight: 1
+  minY: -1
+  maxY: 2
+  gapSize: -1
+  stoneHeight: 1
+  stoneSpeed: 2
 --- !u!4 &1086847326
 Transform:
   m_ObjectHideFlags: 0
@@ -1200,6 +1203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lives: 3
+  hitCooldown: 0.5
 --- !u!1 &1323286287
 GameObject:
   m_ObjectHideFlags: 0

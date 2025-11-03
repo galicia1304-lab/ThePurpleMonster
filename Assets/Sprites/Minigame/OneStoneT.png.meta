@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: dfaa84051c5e6534e857501692f38e5a
+guid: fb290f5d1da7a8f449a276aca8d08b78
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3204023434347368365
-    second: Bottom_Stones1_0
-  - first:
-      213: 737809133553464687
-    second: Bottom_Stones1_1
-  - first:
-      213: 4801070309110947650
-    second: Bottom_Stones1_2
-  - first:
-      213: 5907641652709595043
-    second: Bottom_Stones1_3
+      213: 5692155629208320423
+    second: OneStoneT_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bottom_Stones1_0
+      name: OneStoneT_0
       rect:
         serializedVersion: 2
-        x: 147
-        y: 0
-        width: 225
-        height: 728
+        x: 914
+        y: 925
+        width: 254
+        height: 743
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,74 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 350b2bf79a50983d0800000000000000
-      internalID: -3204023434347368365
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bottom_Stones1_1
-      rect:
-        serializedVersion: 2
-        x: 898
-        y: 0
-        width: 245
-        height: 534
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f653e757f793d3a00800000000000000
-      internalID: 737809133553464687
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bottom_Stones1_2
-      rect:
-        serializedVersion: 2
-        x: 973
-        y: 0
-        width: 1121
-        height: 1218
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 24f9b3c4204d0a240800000000000000
-      internalID: 4801070309110947650
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bottom_Stones1_3
-      rect:
-        serializedVersion: 2
-        x: 2064
-        y: 0
-        width: 281
-        height: 632
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3a79e0a78c82cf150800000000000000
-      internalID: 5907641652709595043
+      spriteID: 7a9b33de2699efe40800000000000000
+      internalID: 5692155629208320423
       vertices: []
       indices: 
       edges: []
@@ -200,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -209,11 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Bottom_Stones1_0: -3204023434347368365
-      Bottom_Stones1_1: 737809133553464687
-      Bottom_Stones1_2: 4801070309110947650
-      Bottom_Stones1_3: 5907641652709595043
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

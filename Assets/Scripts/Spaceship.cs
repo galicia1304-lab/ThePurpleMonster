@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Spaceship : MonoBehaviour
@@ -24,22 +23,6 @@ public class Spaceship : MonoBehaviour
         direction.y += gravity * Time.deltaTime;
         transform.position += direction * Time.deltaTime;
     }
-
-    // Detect collisions with hazards
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Hazard"))
-        {
-            // Tell GameManager to remove a life
-            GameManager.Instance.LoseLife();
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Hazard"))
-        {
-            GameManager.Instance.LoseLife();
-        }
-    }
 }
+
+

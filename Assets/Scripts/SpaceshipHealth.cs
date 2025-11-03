@@ -3,26 +3,29 @@ using UnityEngine.SceneManagement;
 
 public class SpaceshipHealth : MonoBehaviour
 {
-    public int lives = 3; // starting lives
-    private bool isDead = false;
+    [Header("Lives Settings")]
+    public int lives = 3;          // total lives
+    private bool isDead = false;   // has the player died?
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Hazard"))
-        {
-            LoseLife();
-        }
-    }
+    [Header("Hit Cooldown")]
+    public float hitCooldown = 0.5f;   // seconds between registering hits
+    private float lastHitTime = -1f;
 
+    // Only using trigger collisions for hazards
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Hazard"))
         {
-            LoseLife();
+            // Check cooldown
+            if (Time.time - lastHitTime > hitCooldown)
+            {
+                LoseLife();
+                lastHitTime = Time.time;
+            }
         }
     }
 
-    void LoseLife()
+    private void LoseLife()
     {
         lives--;
         Debug.Log("Spaceship hit! Lives remaining: " + lives);
@@ -34,11 +37,10 @@ public class SpaceshipHealth : MonoBehaviour
         }
     }
 
-    void Die()
+    private void Die()
     {
-        Debug.Log("All lives lost! Returning to first scene...");
-        // Load the first scene (index 0 in the build settings)
-        SceneManager.LoadScene(0);
+        Debug.Log("All lives lost! Reloading first scene...");
+        SceneManager.LoadScene(0);  // reload the first scene
     }
 }
 

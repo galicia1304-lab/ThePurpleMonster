@@ -2,50 +2,66 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject prefab;         // assign your stone prefab in the inspector
-    public float spawnRate = 1f;
-    public float minHeight = -1f;
-    public float maxHeight = 1f;
+    public GameObject stonePrefab;
+    public float spawnRate = 2f;
+    public float minY = -1f;
+    public float maxY = 2f;
+    public float gapSize = 3f; // distance between top and bottom stones
+    public float stoneHeight = 1f; // approximate height of one stone
+    public float stoneSpeed = 2f; // how fast stones move left
 
-    private void OnEnable()
+    private void Start()
     {
-        InvokeRepeating(nameof(Spawn), spawnRate, spawnRate);
+        InvokeRepeating(nameof(SpawnPair), 1f, spawnRate);
     }
 
-    private void OnDisable()
+    void SpawnPair()
     {
-        CancelInvoke(nameof(Spawn));
+        float gapCenterY = Random.Range(minY, maxY);
+
+        // Calculate top and bottom positions using fixed stone height
+        Vector3 topPos = transform.position + Vector3.up * (gapCenterY + gapSize / 2f + stoneHeight / 2f);
+        Vector3 bottomPos = transform.position + Vector3.up * (gapCenterY - gapSize / 2f - stoneHeight / 2f);
+
+        // Spawn both stones
+        GameObject topStone = Instantiate(stonePrefab, topPos, Quaternion.identity);
+        GameObject bottomStone = Instantiate(stonePrefab, bottomPos, Quaternion.identity);
+
+        SetupStone(topStone);
+        SetupStone(bottomStone);
     }
 
-    private void Spawn()
+    void SetupStone(GameObject stone)
     {
-        // Instantiate the stone
-        GameObject stone = Instantiate(prefab, transform.position, Quaternion.identity);
-
-        // Move it randomly up/down
-        stone.transform.position += Vector3.up * Random.Range(minHeight, maxHeight);
-
-        // Make sure it has a collider and tag
+        // Ensure it has a collider
         Collider2D col = stone.GetComponent<Collider2D>();
         if (col == null)
-        {
-            col = stone.AddComponent<BoxCollider2D>(); // or CircleCollider2D
-            col.isTrigger = true;                      // set as trigger
-        }
-        else
-        {
-            col.isTrigger = true;
-        }
+            col = stone.AddComponent<BoxCollider2D>();
+        col.isTrigger = true;
 
-        // Tag it as hazard
-        stone.tag = "Hazard";
 
-        // Optional: make invisible
-        SpriteRenderer sr = stone.GetComponent<SpriteRenderer>();
-        if (sr != null)
-        {
-            sr.enabled = false; // make the sprite invisible
-        }
+        // Add movement component
+        StoneMover mover = stone.AddComponent<StoneMover>();
+        mover.speed = stoneSpeed;
+
+        // Auto-destroy after 10 seconds
+        Destroy(stone, 10f);
     }
 }
 
+public class StoneMover : MonoBehaviour
+{
+    public float speed = 2f;
+
+    void Update()
+    {
+        transform.position += Vector3.left * speed * Time.deltaTime;
+    }
+
+    // Optional: Destroy if it goes far off-screen (extra safety)
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
+
+}
