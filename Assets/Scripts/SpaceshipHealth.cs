@@ -1,22 +1,29 @@
+using TMPro; // Only if using TextMeshPro
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SpaceshipHealth : MonoBehaviour
 {
     [Header("Lives Settings")]
-    public int lives = 3;          // total lives
-    private bool isDead = false;   // has the player died?
+    public int lives = 3;
+    private bool isDead = false;
+
+    [Header("UI Reference")]
+    public TextMeshProUGUI livesText;  // Use Text if not using TMP
 
     [Header("Hit Cooldown")]
-    public float hitCooldown = 0.5f;   // seconds between registering hits
+    public float hitCooldown = 0.5f;
     private float lastHitTime = -1f;
 
-    // Only using trigger collisions for hazards
+    private void Start()
+    {
+        UpdateLivesUI();
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Hazard"))
         {
-            // Check cooldown
             if (Time.time - lastHitTime > hitCooldown)
             {
                 LoseLife();
@@ -29,6 +36,7 @@ public class SpaceshipHealth : MonoBehaviour
     {
         lives--;
         Debug.Log("Spaceship hit! Lives remaining: " + lives);
+        UpdateLivesUI();
 
         if (lives <= 0 && !isDead)
         {
@@ -37,10 +45,17 @@ public class SpaceshipHealth : MonoBehaviour
         }
     }
 
+    private void UpdateLivesUI()
+    {
+        if (livesText != null)
+            livesText.text = ": " + lives;
+    }
+
     private void Die()
     {
         Debug.Log("All lives lost! Reloading first scene...");
-        SceneManager.LoadScene(0);  // reload the first scene
+        SceneManager.LoadScene(0);
     }
 }
+
 
