@@ -1306,7 +1306,7 @@ GameObject:
   - component: {fileID: 241080832}
   - component: {fileID: 241080833}
   m_Layer: 0
-  m_Name: Collider
+  m_Name: ColliderG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2797,6 +2797,11 @@ MonoBehaviour:
   coinCount: 0
   coinText: {fileID: 1687008405}
   invincibleTime: 0.5
+  groundCheck: {fileID: 241080832}
+  groundCheckRadius: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!61 &623372384
 BoxCollider2D:
   m_ObjectHideFlags: 0

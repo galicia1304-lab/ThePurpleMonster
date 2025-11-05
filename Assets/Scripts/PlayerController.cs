@@ -35,6 +35,11 @@ public class PlayerController2D : MonoBehaviour
     private bool invincible = false;
     public float invincibleTime = 0.5f;
 
+    [Header("Ground Check")]
+    public Transform groundCheck;            // Drag the GroundCheck transform here
+    public float groundCheckRadius = 0.1f;   // Small radius to detect the ground
+    public LayerMask groundLayer;            // Assign your floor/ground layer
+    private bool isGrounded;
 
     void Start()
     {
@@ -64,14 +69,22 @@ public class PlayerController2D : MonoBehaviour
         animator.SetBool("isWalking", moveInput != 0 && !isRunning);
         animator.SetBool("isRunning", moveInput != 0 && isRunning);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        // Check if character is grounded
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+
+        // Jump input
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             animator.SetBool("isJumping", true);
         }
 
-        if (rb.linearVelocity.y == 0)
+        // Update animator based on grounded state
+        if (isGrounded && rb.linearVelocity.y <= 0)
+        {
             animator.SetBool("isJumping", false);
+        }
+
 
         // Manual damage test key
         if (Input.GetKeyDown(KeyCode.K))
