@@ -1,0 +1,567 @@
+fileFormatVersion: 2
+guid: 832bb139df9115040ab1d417f389a65d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1918151568835487587
+    second: CharacterSitsPhone_0
+  - first:
+      213: 4708428098839574233
+    second: CharacterSitsPhone_1
+  - first:
+      213: -168375322966107335
+    second: CharacterSitsPhone_2
+  - first:
+      213: -7582607371566800791
+    second: CharacterSitsPhone_3
+  - first:
+      213: -5444296388826557554
+    second: CharacterSitsPhone_4
+  - first:
+      213: -9031394412062145626
+    second: CharacterSitsPhone_5
+  - first:
+      213: -8605337522434915511
+    second: CharacterSitsPhone_6
+  - first:
+      213: 6986714190726991680
+    second: CharacterSitsPhone_7
+  - first:
+      213: -2599401807585914907
+    second: CharacterSitsPhone_8
+  - first:
+      213: -4023739686795938237
+    second: CharacterSitsPhone_9
+  - first:
+      213: -3704597736082012773
+    second: CharacterSitsPhone_10
+  - first:
+      213: -6711968321808561113
+    second: CharacterSitsPhone_11
+  - first:
+      213: 856124855564022680
+    second: CharacterSitsPhone_12
+  - first:
+      213: -7722055527628736642
+    second: CharacterSitsPhone_13
+  - first:
+      213: 7330525358515213654
+    second: CharacterSitsPhone_14
+  - first:
+      213: -7824574959404282324
+    second: CharacterSitsPhone_15
+  - first:
+      213: 5361529490634887485
+    second: CharacterSitsPhone_16
+  - first:
+      213: 8320231366546730176
+    second: CharacterSitsPhone_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CharacterSitsPhone_0
+      rect:
+        serializedVersion: 2
+        x: 1396
+        y: 4323
+        width: 62
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3672cc560b4ae9a10800000000000000
+      internalID: 1918151568835487587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSitsPhone_1
+      rect:
+        serializedVersion: 2
+        x: 2180
+        y: 3477
+        width: 688
+        height: 882
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d6fcc9d862b75140800000000000000
+      internalID: 4708428098839574233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSitsPhone_2
+      rect:
+        serializedVersion: 2
+        x: 778
+        y: 2956
+        width: 207
+        height: 556
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93bd9ad298fc9adf0800000000000000
+      internalID: -168375322966107335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSitsPhone_3
+      rect:
+        serializedVersion: 2
+        x: 1215
+        y: 812
+        width: 2322
+        height: 3114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 960a08a15ca25c690800000000000000
+      internalID: -7582607371566800791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSitsPhone_4
+      rect:
+        serializedVersion: 2
+        x: 3243
+        y: 1991
+        width: 332
+        height: 898
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e831d0c8749f174b0800000000000000
+      internalID: -5444296388826557554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSitsPhone_5
+      rect:
+        serializedVersion: 2
+        x: 4393
+        y: 2301
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a38692f1aa0aa280800000000000000
+      internalID: -9031394412062145626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSitsPhone_6
+      rect:
+        serializedVersion: 2
+        x: 3577
+        y: 1974
+        width: 9
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9434deacd13b39880800000000000000
+      internalID: -8605337522434915511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSitsPhone_7
+      rect:
+        serializedVersion: 2
+        x: 3592
+        y: 1933
+        width: 20
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04f867d0a8bc5f060800000000000000
+      internalID: 6986714190726991680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSitsPhone_8
+      rect:
+        serializedVersion: 2
+        x: 3650
+        y: 1727
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ef455604d11debd0800000000000000
+      internalID: -2599401807585914907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSitsPhone_9
+      rect:
+        serializedVersion: 2
+        x: 3671
+        y: 1652
+        width: 15
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 346f2e3d21ec828c0800000000000000
+      internalID: -4023739686795938237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSitsPhone_10
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 1207
+        width: 622
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b958d11acff969cc0800000000000000
+      internalID: -3704597736082012773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSitsPhone_11
+      rect:
+        serializedVersion: 2
+        x: 1183
+        y: 1195
+        width: 34
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72c0de27f5c4ad2a0800000000000000
+      internalID: -6711968321808561113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSitsPhone_12
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 672
+        width: 560
+        height: 680
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 893b64b250191eb00800000000000000
+      internalID: 856124855564022680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSitsPhone_13
+      rect:
+        serializedVersion: 2
+        x: 3505
+        y: 1207
+        width: 79
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e77f8db296fb5d490800000000000000
+      internalID: -7722055527628736642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSitsPhone_14
+      rect:
+        serializedVersion: 2
+        x: 1145
+        y: 1180
+        width: 38
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 655da4b89f14bb560800000000000000
+      internalID: 7330525358515213654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSitsPhone_15
+      rect:
+        serializedVersion: 2
+        x: 2585
+        y: 702
+        width: 626
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2e8a42e786896390800000000000000
+      internalID: -7824574959404282324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSitsPhone_16
+      rect:
+        serializedVersion: 2
+        x: 3222
+        y: 764
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d31d2164aaaf76a40800000000000000
+      internalID: 5361529490634887485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSitsPhone_17
+      rect:
+        serializedVersion: 2
+        x: 3230
+        y: 770
+        width: 171
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cca41c6856677370800000000000000
+      internalID: 8320231366546730176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
