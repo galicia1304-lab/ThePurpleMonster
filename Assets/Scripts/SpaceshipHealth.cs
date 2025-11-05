@@ -1,4 +1,4 @@
-using TMPro; // Only if using TextMeshPro
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,11 +9,17 @@ public class SpaceshipHealth : MonoBehaviour
     private bool isDead = false;
 
     [Header("UI Reference")]
-    public TextMeshProUGUI livesText;  // Use Text if not using TMP
+    public TextMeshProUGUI livesText;  // Assign in Inspector
 
     [Header("Hit Cooldown")]
     public float hitCooldown = 0.5f;
     private float lastHitTime = -1f;
+
+    [Header("Restart Settings")]
+    public float respawnDelay = 2f; // seconds to wait before restarting
+
+    [Header("Effects")]
+    public GameObject explosionEffect; // Optional: particle prefab or animation
 
     private void Start()
     {
@@ -41,7 +47,7 @@ public class SpaceshipHealth : MonoBehaviour
         if (lives <= 0 && !isDead)
         {
             isDead = true;
-            Die();
+            StartCoroutine(HandleDeath());
         }
     }
 
@@ -51,11 +57,21 @@ public class SpaceshipHealth : MonoBehaviour
             livesText.text = ": " + lives;
     }
 
-    private void Die()
+    private System.Collections.IEnumerator HandleDeath()
     {
-        Debug.Log("All lives lost! Reloading first scene...");
-        SceneManager.LoadScene(0);
+        Debug.Log("All lives lost! Playing explosion and restarting minigame...");
+
+        // Play explosion effect at spaceship position
+        if (explosionEffect != null)
+            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+
+        // Optional: wait a short delay so player can see the explosion
+        yield return new WaitForSeconds(respawnDelay);
+
+        // Reload the current scene to restart the minigame
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
+
 
 

@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 773247461}
   - component: {fileID: 773247460}
   m_Layer: 0
-  m_Name: red_heart_0
+  m_Name: RedHeart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -515,12 +515,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773247459}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.7, y: 5.4, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1286.8, y: -714.5, z: -1}
   m_LocalScale: {x: 1.5233, y: 1.5233, z: 1.5233}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 972931700}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &939654363
 GameObject:
@@ -682,6 +682,7 @@ RectTransform:
   m_Children:
   - {fileID: 1104633748}
   - {fileID: 1323286288}
+  - {fileID: 773247461}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1042,7 +1043,7 @@ Transform:
   m_GameObject: {fileID: 1250067942}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 37.73, y: 1.19, z: 0.07993334}
+  m_LocalPosition: {x: 0, y: -0.251, z: 0}
   m_LocalScale: {x: 0.59695, y: 0.59695, z: 0.59695}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1205,6 +1206,8 @@ MonoBehaviour:
   lives: 3
   livesText: {fileID: 1323286289}
   hitCooldown: 0.5
+  respawnDelay: 1
+  explosionEffect: {fileID: 4535006216103734310, guid: 98c4704d0fd7211449bcf5c451095a60, type: 3}
 --- !u!1 &1323286287
 GameObject:
   m_ObjectHideFlags: 0
@@ -1239,7 +1242,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -991, y: 621}
+  m_AnchoredPosition: {x: -721, y: 631}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1323286289
@@ -1604,4 +1607,3 @@ SceneRoots:
   - {fileID: 1003679339}
   - {fileID: 972931700}
   - {fileID: 506790938}
-  - {fileID: 773247461}
