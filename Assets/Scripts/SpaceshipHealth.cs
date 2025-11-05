@@ -9,17 +9,18 @@ public class SpaceshipHealth : MonoBehaviour
     private bool isDead = false;
 
     [Header("UI Reference")]
-    public TextMeshProUGUI livesText;  // Assign in Inspector
+    public TextMeshProUGUI livesText;
 
     [Header("Hit Cooldown")]
     public float hitCooldown = 0.5f;
     private float lastHitTime = -1f;
 
     [Header("Restart Settings")]
-    public float respawnDelay = 2f; // seconds to wait before restarting
+    public float respawnDelay = 2f;
 
     [Header("Effects")]
-    public GameObject explosionEffect; // Optional: particle prefab or animation
+    public GameObject explosionEffect;
+    public SpriteRenderer spaceshipRenderer;
 
     private void Start()
     {
@@ -41,8 +42,10 @@ public class SpaceshipHealth : MonoBehaviour
     private void LoseLife()
     {
         lives--;
-        Debug.Log("Spaceship hit! Lives remaining: " + lives);
         UpdateLivesUI();
+
+        if (spaceshipRenderer != null)
+            StartCoroutine(Blink());
 
         if (lives <= 0 && !isDead)
         {
@@ -57,19 +60,40 @@ public class SpaceshipHealth : MonoBehaviour
             livesText.text = ": " + lives;
     }
 
+    private System.Collections.IEnumerator Blink()
+    {
+        float blinkDuration = 0.5f;
+        float blinkInterval = 0.1f;
+        float elapsed = 0f;
+
+        while (elapsed < blinkDuration)
+        {
+            spaceshipRenderer.enabled = !spaceshipRenderer.enabled;
+            yield return new WaitForSeconds(blinkInterval);
+            elapsed += blinkInterval;
+        }
+
+        spaceshipRenderer.enabled = true;
+    }
+
     private System.Collections.IEnumerator HandleDeath()
     {
-        Debug.Log("All lives lost! Playing explosion and restarting minigame...");
-
-        // Play explosion effect at spaceship position
         if (explosionEffect != null)
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
 
-        // Optional: wait a short delay so player can see the explosion
         yield return new WaitForSeconds(respawnDelay);
 
-        // Reload the current scene to restart the minigame
+        // Reload scene, then PortalExitManager will detect the new spaceship
+        SceneManager.sceneLoaded += OnSceneReloaded;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void OnSceneReloaded(Scene scene, LoadSceneMode mode)
+    {
+        SceneManager.sceneLoaded -= OnSceneReloaded;
+        // Notify PortalExitManager
+        if (PortalExitManager.Instance != null)
+            PortalExitManager.Instance.OnSpaceshipRespawn();
     }
 }
 

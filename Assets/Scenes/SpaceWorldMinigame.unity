@@ -516,7 +516,7 @@ Transform:
   m_GameObject: {fileID: 773247459}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1286.8, y: -714.5, z: -1}
+  m_LocalPosition: {x: -1288.7, y: -714.5, z: -1}
   m_LocalScale: {x: 1.5233, y: 1.5233, z: 1.5233}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 939654364}
   - component: {fileID: 939654365}
   m_Layer: 0
-  m_Name: PortalManager
+  m_Name: PortalExitManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -566,12 +566,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c41adef05a080964e8f0602af00f15fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portalPrefab: {fileID: 1218417903}
-  spaceshipPrefab: {fileID: 1250067942}
+  exitPortalPrefab: {fileID: 5846776599022133170, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
   nextSceneName: GhostFight
-  portalDisappearTime: 3
-  timeBeforeNextPortal: 21
-  spaceshipFlyTime: 1
+  timeBeforeExitPortal: 20
+  portalMoveSpeed: 5
+  shipFlySpeed: 5
+  shrinkTime: 0.5
 --- !u!1 &972931695
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,6 +735,70 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1075781801
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3425860486673724498, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 3425860486673724498, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3425860486673724498, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3425860486673724498, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3425860486673724498, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3425860486673724498, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3425860486673724498, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3425860486673724498, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3425860486673724498, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3425860486673724498, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3425860486673724498, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846776599022133170, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
+      propertyPath: m_Name
+      value: PortalPrefabSpaceship
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5846776599022133170, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2117127815}
+  m_SourcePrefab: {fileID: 100100000, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
 --- !u!1 &1086847324
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,96 +987,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104633747}
   m_CullTransparentMesh: 1
---- !u!1 &1218417903 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5846776599022133170, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
-  m_PrefabInstance: {fileID: 1880612635}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &1218417907
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218417903}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &1218417908
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218417903}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: -0.5344219, y: 0.3538741}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.884449, y: 5.2031565}
-  m_EdgeRadius: 0
---- !u!114 &1218417909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218417903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79cac6798c2ae45449843530a2c2e83d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1250067942
 GameObject:
   m_ObjectHideFlags: 0
@@ -1208,6 +1182,7 @@ MonoBehaviour:
   hitCooldown: 0.5
   respawnDelay: 1
   explosionEffect: {fileID: 4535006216103734310, guid: 98c4704d0fd7211449bcf5c451095a60, type: 3}
+  spaceshipRenderer: {fileID: 1250067944}
 --- !u!1 &1323286287
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,7 +1217,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -721, y: 631}
+  m_AnchoredPosition: {x: -985.4, y: 631}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1323286289
@@ -1444,80 +1419,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationSpeed: 1
---- !u!1001 &1880612635
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3425860486673724498, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3425860486673724498, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3425860486673724498, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 37.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 3425860486673724498, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 5.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3425860486673724498, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.016374351
-      objectReference: {fileID: 0}
-    - target: {fileID: 3425860486673724498, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3425860486673724498, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3425860486673724498, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3425860486673724498, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3425860486673724498, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3425860486673724498, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3425860486673724498, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5846776599022133170, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
-      propertyPath: m_Name
-      value: PortalPrefabSpaceship
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5846776599022133170, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1218417907}
-    - targetCorrespondingSourceObject: {fileID: 5846776599022133170, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1218417909}
-    - targetCorrespondingSourceObject: {fileID: 5846776599022133170, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1218417908}
-  m_SourcePrefab: {fileID: 100100000, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
 --- !u!1 &1887575563
 GameObject:
   m_ObjectHideFlags: 0
@@ -1593,6 +1494,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887575563}
   m_CullTransparentMesh: 1
+--- !u!1 &2117127813 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5846776599022133170, guid: 6a1040514d65c3f4c81fefbdc2bd7e8b, type: 3}
+  m_PrefabInstance: {fileID: 1075781801}
+  m_PrefabAsset: {fileID: 0}
+--- !u!111 &2117127815
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117127813}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: c2dba812cc03b794aac16d26301eee01, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: c2dba812cc03b794aac16d26301eee01, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1602,7 +1525,7 @@ SceneRoots:
   - {fileID: 84299415}
   - {fileID: 1569367727}
   - {fileID: 1086847326}
-  - {fileID: 1880612635}
+  - {fileID: 1075781801}
   - {fileID: 939654364}
   - {fileID: 1003679339}
   - {fileID: 972931700}
