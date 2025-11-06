@@ -3,35 +3,47 @@ using UnityEngine;
 public class FireProjectile : MonoBehaviour
 {
     public float speed = 5f;
-    private Vector3 moveDirection;
+    public float lifetime = 5f; // how long before fire destroys itself
+    private Transform target;
+    private Vector3 randomOffset;
 
     void Start()
     {
-        Destroy(gameObject, 5f); // destroy after 5 seconds
+        // Random offset to make movement uneven
+        randomOffset = new Vector3(Random.Range(-0.5f, 0.5f), 0, 0);
 
-        if (GetComponent<Collider2D>() == null)
-        {
-            CircleCollider2D collider = gameObject.AddComponent<CircleCollider2D>();
-            collider.isTrigger = true;
-        }
+        // Destroy the fire after some time automatically
+        Destroy(gameObject, lifetime);
+    }
+
+    public void SetTarget(Transform player)
+    {
+        target = player;
     }
 
     void Update()
     {
-        transform.position += moveDirection * speed * Time.deltaTime;
-
-        // Destroy if off-camera
-        Vector3 screenPoint = Camera.main.WorldToViewportPoint(transform.position);
-        if (screenPoint.x < 0 || screenPoint.x > 1 || screenPoint.y < 0 || screenPoint.y > 1)
+        if (target != null)
         {
-            Destroy(gameObject);
+            transform.position = Vector3.MoveTowards(
+                transform.position,
+                target.position + randomOffset,
+                speed * Time.deltaTime
+            );
         }
     }
 
-    public void SetDirection(Vector3 dir)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        moveDirection = dir.normalized;
+        if (other.CompareTag("Player"))
+        {
+            Destroy(gameObject); // destroy only the fireball, not the boss
+        }
     }
+
 }
+
+
+
 
 
