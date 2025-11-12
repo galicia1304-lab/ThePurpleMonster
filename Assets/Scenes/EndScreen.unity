@@ -978,6 +978,7 @@ GameObject:
   - component: {fileID: 1836017968}
   - component: {fileID: 1836017967}
   - component: {fileID: 1836017966}
+  - component: {fileID: 1836017970}
   m_Layer: 0
   m_Name: MainMenu
   m_TagString: Untagged
@@ -1113,6 +1114,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1836017970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836017965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb28811ac9d100440bf3a44623528ce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalColor: {r: 0.783368, g: 0.4372445, b: 0.81886786, a: 1}
+  hoverColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &2119458052
 PrefabInstance:
   m_ObjectHideFlags: 0
