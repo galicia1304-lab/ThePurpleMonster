@@ -9,6 +9,7 @@ TagManager:
   - Hearts
   - Checkpoint
   - Projectile
+  - Boss
   layers:
   - Default
   - TransparentFX

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5372175484531663739}
   - component: {fileID: 4165174968901311216}
   - component: {fileID: 3758948397597160421}
+  - component: {fileID: -5897429311943564547}
   m_Layer: 0
   m_Name: SmallFire
   m_TagString: Projectile
@@ -120,7 +121,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -175,3 +176,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c1283a165b6bdb49abbff4329157a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5897429311943564547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4307943947466124874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de78e9386a64d164e89766305b90add7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
