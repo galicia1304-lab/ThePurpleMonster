@@ -34,18 +34,14 @@ public class BossFireAttack : MonoBehaviour
             Debug.LogError("Fire prefab not assigned to BossFireAttack!");
             return;
         }
-        if (player == null)
-        {
-            Debug.LogError("Player not assigned to BossFireAttack!");
-            return;
-        }
 
         GameObject fire = Instantiate(firePrefab, fireSpawnPoint.position, Quaternion.identity);
 
         FireProjectile projectile = fire.GetComponent<FireProjectile>();
         if (projectile != null)
         {
-            projectile.SetTarget(player);
+            // Shoot strictly to the left
+            projectile.SetDirection(Vector2.left);
         }
         else
         {

@@ -352,6 +352,7 @@ Transform:
   - {fileID: 1636504311}
   - {fileID: 1180191800}
   - {fileID: 58235553}
+  - {fileID: 784613518}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &343978557
@@ -852,12 +853,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 784613516}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.31, y: 1.4419, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8.943792, y: 4.6345925, z: 0.114173755}
   m_LocalScale: {x: 0.4468928, y: 0.6115455, z: 0.4468928}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 134959596}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &830751419
 GameObject:
@@ -1768,7 +1769,7 @@ MonoBehaviour:
   fireSpawnPoint: {fileID: 343978558}
   player: {fileID: 830751420}
   minFireInterval: 0.5
-  maxFireInterval: 2
+  maxFireInterval: 3
 --- !u!114 &1236008083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2504,4 +2505,3 @@ SceneRoots:
   - {fileID: 616479695}
   - {fileID: 848141789}
   - {fileID: 1748367335}
-  - {fileID: 784613518}
