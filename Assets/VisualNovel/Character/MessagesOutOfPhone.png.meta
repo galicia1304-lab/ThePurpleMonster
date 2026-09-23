@@ -234,7 +234,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MessagesOutOfPhone_0: 3890638069489208617
+      MessagesOutOfPhone_1: 466008339870282684
+      MessagesOutOfPhone_2: -4418201090373793621
+      MessagesOutOfPhone_3: -3617649216650137490
+      MessagesOutOfPhone_4: -7926958977430060811
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

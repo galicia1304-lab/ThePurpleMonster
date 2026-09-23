@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sword_dash_0037_0: 4292454153063003406
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

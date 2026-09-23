@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      fighter_death_0058_0: -7216606816108780987
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

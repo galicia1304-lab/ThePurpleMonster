@@ -259,7 +259,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SadCharacterLookAtPhone_0: 1472747913732597368
+      SadCharacterLookAtPhone_1: -7491621586281887210
+      SadCharacterLookAtPhone_2: -771679313471088904
+      SadCharacterLookAtPhone_3: 6705231876535724540
+      SadCharacterLookAtPhone_4: 8181581819931440940
+      SadCharacterLookAtPhone_5: 2868216152743448702
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

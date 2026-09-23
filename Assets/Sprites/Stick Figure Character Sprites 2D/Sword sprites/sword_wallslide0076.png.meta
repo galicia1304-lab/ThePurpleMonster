@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sword_wallslide0076_0: -5716107919313724791
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

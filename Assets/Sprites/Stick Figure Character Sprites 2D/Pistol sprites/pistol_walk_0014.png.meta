@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pistol_walk_0014_0: 3368508019054912685
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
