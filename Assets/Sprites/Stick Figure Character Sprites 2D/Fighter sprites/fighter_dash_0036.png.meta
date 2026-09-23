@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      fighter_dash_0036_0: 2854024240846896259
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sword_climb_0041_0: -4004780996824582664
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

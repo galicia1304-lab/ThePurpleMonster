@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      fighter_air_attack_0062_0: -5227370936988198122
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

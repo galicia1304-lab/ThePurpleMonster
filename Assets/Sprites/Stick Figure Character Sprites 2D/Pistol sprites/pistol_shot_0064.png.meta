@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pistol_shot_0064_0: -5978729207397215226
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
