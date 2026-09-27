@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 23427878}
   - component: {fileID: 23427877}
   m_Layer: 0
-  m_Name: UIAudioButtons
+  m_Name: UIAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1039,7 +1039,6 @@ GameObject:
   - component: {fileID: 142945077}
   - component: {fileID: 142945076}
   - component: {fileID: 142945078}
-  - component: {fileID: 142945079}
   m_Layer: 0
   m_Name: Coin6
   m_TagString: Heart
@@ -1174,19 +1173,6 @@ Animation:
   m_AnimatePhysics: 0
   m_UpdateMode: 0
   m_CullingType: 0
---- !u!114 &142945079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 142945074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f5055231be3e3842a39c25190832e86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Coin
-  pickupSound: {fileID: 8300000, guid: f163d9a3291a1074b893b1c88962f175, type: 3}
 --- !u!1 &161213260
 GameObject:
   m_ObjectHideFlags: 0
@@ -2095,7 +2081,6 @@ GameObject:
   - component: {fileID: 379849474}
   - component: {fileID: 379849473}
   - component: {fileID: 379849475}
-  - component: {fileID: 379849476}
   m_Layer: 0
   m_Name: Coin2
   m_TagString: Heart
@@ -2231,19 +2216,6 @@ Animation:
   m_AnimatePhysics: 0
   m_UpdateMode: 0
   m_CullingType: 0
---- !u!114 &379849476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 379849471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f5055231be3e3842a39c25190832e86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Coin
-  pickupSound: {fileID: 8300000, guid: f163d9a3291a1074b893b1c88962f175, type: 3}
 --- !u!1 &406113947
 GameObject:
   m_ObjectHideFlags: 0
@@ -2679,7 +2651,6 @@ GameObject:
   - component: {fileID: 530338100}
   - component: {fileID: 530338099}
   - component: {fileID: 530338101}
-  - component: {fileID: 530338102}
   m_Layer: 0
   m_Name: Coin5
   m_TagString: Heart
@@ -2814,19 +2785,6 @@ Animation:
   m_AnimatePhysics: 0
   m_UpdateMode: 0
   m_CullingType: 0
---- !u!114 &530338102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 530338097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f5055231be3e3842a39c25190832e86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Coin
-  pickupSound: {fileID: 8300000, guid: f163d9a3291a1074b893b1c88962f175, type: 3}
 --- !u!1 &596390440
 GameObject:
   m_ObjectHideFlags: 0
@@ -4630,7 +4588,6 @@ GameObject:
   - component: {fileID: 928611232}
   - component: {fileID: 928611231}
   - component: {fileID: 928611233}
-  - component: {fileID: 928611234}
   m_Layer: 0
   m_Name: Coin3
   m_TagString: Heart
@@ -4765,19 +4722,6 @@ Animation:
   m_AnimatePhysics: 0
   m_UpdateMode: 0
   m_CullingType: 0
---- !u!114 &928611234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 928611229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f5055231be3e3842a39c25190832e86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Coin
-  pickupSound: {fileID: 8300000, guid: f163d9a3291a1074b893b1c88962f175, type: 3}
 --- !u!1 &949593331
 GameObject:
   m_ObjectHideFlags: 0
@@ -7453,37 +7397,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.55, y: 1.9406611}
   m_EdgeRadius: 0
---- !u!1 &1630367037
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1630367038}
-  m_Layer: 0
-  m_Name: UIAudioCoin
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1630367038
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1630367037}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.45448, y: 2.49971, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1687008404
 GameObject:
   m_ObjectHideFlags: 0
@@ -8020,7 +7933,6 @@ GameObject:
   - component: {fileID: 1869891061}
   - component: {fileID: 1869891060}
   - component: {fileID: 1869891062}
-  - component: {fileID: 1869891063}
   m_Layer: 0
   m_Name: Coin4
   m_TagString: Heart
@@ -8155,19 +8067,6 @@ Animation:
   m_AnimatePhysics: 0
   m_UpdateMode: 0
   m_CullingType: 0
---- !u!114 &1869891063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1869891058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f5055231be3e3842a39c25190832e86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Coin
-  pickupSound: {fileID: 8300000, guid: f163d9a3291a1074b893b1c88962f175, type: 3}
 --- !u!1 &1876149359
 GameObject:
   m_ObjectHideFlags: 0
@@ -8180,7 +8079,6 @@ GameObject:
   - component: {fileID: 1876149361}
   - component: {fileID: 1876149362}
   - component: {fileID: 1876149363}
-  - component: {fileID: 1876149364}
   m_Layer: 0
   m_Name: Coin1
   m_TagString: Heart
@@ -8315,19 +8213,6 @@ Animation:
   m_AnimatePhysics: 0
   m_UpdateMode: 0
   m_CullingType: 0
---- !u!114 &1876149364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876149359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f5055231be3e3842a39c25190832e86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Coin
-  pickupSound: {fileID: 8300000, guid: f163d9a3291a1074b893b1c88962f175, type: 3}
 --- !u!1 &1882185005
 GameObject:
   m_ObjectHideFlags: 0
@@ -9534,4 +9419,3 @@ SceneRoots:
   - {fileID: 698009599}
   - {fileID: 373642192}
   - {fileID: 23427879}
-  - {fileID: 1630367038}
