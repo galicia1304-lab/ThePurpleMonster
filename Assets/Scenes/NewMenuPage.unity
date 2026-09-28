@@ -1731,7 +1731,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1654313305}
-        m_TargetAssemblyTypeName: TutorialUI, Assembly-CSharp
+        m_TargetAssemblyTypeName: TutorialContoller, Assembly-CSharp
         m_MethodName: OpenTutorial
         m_Mode: 1
         m_Arguments:
@@ -3150,7 +3150,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press                     to jfly
+  m_Text: Press                     to fly
 --- !u!222 &662675240
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4461,7 +4461,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1654313305}
-        m_TargetAssemblyTypeName: TutorialUI, Assembly-CSharp
+        m_TargetAssemblyTypeName: TutorialContoller, Assembly-CSharp
         m_MethodName: NextPage
         m_Mode: 1
         m_Arguments:
@@ -5459,7 +5459,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &1513036099
 MonoBehaviour:
@@ -5616,6 +5616,12 @@ MonoBehaviour:
   openDuration: 0.25
   audioSource: {fileID: 0}
   clickSound: {fileID: 0}
+  tutorialHoverSound: {fileID: 0}
+  tutorialPressSound: {fileID: 0}
+  closeHoverSound: {fileID: 0}
+  closePressSound: {fileID: 0}
+  nextHoverSound: {fileID: 0}
+  nextPressSound: {fileID: 0}
 --- !u!4 &1654313306
 Transform:
   m_ObjectHideFlags: 0

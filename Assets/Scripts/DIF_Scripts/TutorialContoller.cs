@@ -7,13 +7,25 @@ public class TutorialContoller : MonoBehaviour
     public GameObject tutorialPanel;
     public GameObject[] tutorialPages;
 
-    [Header("Animation")]
+[Header("Animation")]
     public float targetScale = 117f;
     public float openDuration = 0.3f;
 
     [Header("Audio")]
     public AudioSource audioSource;
     public AudioClip clickSound;
+
+    [Header("Tutorial Button Sounds")]
+    public AudioClip tutorialHoverSound;
+    public AudioClip tutorialPressSound;
+
+    [Header("Close Button Sounds")]
+    public AudioClip closeHoverSound;
+    public AudioClip closePressSound;
+
+    [Header("Next Button Sounds")]
+    public AudioClip nextHoverSound;
+    public AudioClip nextPressSound;
 
     private int currentPage = 0;
 
@@ -64,6 +76,48 @@ public class TutorialContoller : MonoBehaviour
         tutorialPanel.SetActive(false);
     }
 
+    // =========================
+    // HOVER SOUNDS
+    // =========================
+
+    public void TutorialHover()
+    {
+        PlaySound(tutorialHoverSound);
+    }
+
+    public void CloseHover()
+    {
+        PlaySound(closeHoverSound);
+    }
+
+    public void NextHover()
+    {
+        PlaySound(nextHoverSound);
+    }
+
+    // =========================
+    // PRESS SOUNDS
+    // =========================
+
+    public void TutorialPress()
+    {
+        PlaySound(tutorialPressSound);
+    }
+
+    public void ClosePress()
+    {
+        PlaySound(closePressSound);
+    }
+
+    public void NextPress()
+    {
+        PlaySound(nextPressSound);
+    }
+
+    // =========================
+    // EXISTING CODE
+    // =========================
+
     private void ShowPage(int pageIndex)
     {
         for (int i = 0; i < tutorialPages.Length; i++)
@@ -102,4 +156,5 @@ public class TutorialContoller : MonoBehaviour
             audioSource.PlayOneShot(clip);
         }
     }
+
 }
