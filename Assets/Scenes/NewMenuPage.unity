@@ -5297,7 +5297,7 @@ GameObject:
   - component: {fileID: 1444470370}
   - component: {fileID: 1444470369}
   m_Layer: 5
-  m_Name: Bacgound
+  m_Name: Backgound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
