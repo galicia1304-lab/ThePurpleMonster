@@ -114,9 +114,7 @@ public class TutorialContoller : MonoBehaviour
         PlaySound(nextPressSound);
     }
 
-    // =========================
-    // EXISTING CODE
-    // =========================
+
 
     private void ShowPage(int pageIndex)
     {

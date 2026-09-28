@@ -5612,7 +5612,7 @@ MonoBehaviour:
   - {fileID: 1431081910}
   - {fileID: 4041497}
   - {fileID: 1473691864}
-  targetScale: 117
+  targetScale: 0.080764
   openDuration: 0.25
   audioSource: {fileID: 0}
   clickSound: {fileID: 0}
