@@ -16,26 +16,27 @@ public class InfoPanelController : MonoBehaviour
     private Vector2 menuCenterPosition;
     private Vector2 pauseButtonPosition;
 
-    // This remembers your scale from the Inspector
     private Vector3 menuNormalScale;
 
     private void Start()
     {
-        // Remember the scale you set in Unity.
-        // In your case this will be (90, 90, 90).
+        // Remember the scale set in the Inspector
         menuNormalScale = menuPanel.localScale;
 
-        // Remember where the menu should be when fully open
+        // Remember the menu's open position
         menuCenterPosition = menuPanel.anchoredPosition;
 
-        // Remember the pause button position
+        // Remember the pause button's position
         pauseButtonPosition = pauseButton.anchoredPosition;
 
-        // Start the menu at the pause button
+        // Start with the menu hidden at the pause button
         menuPanel.anchoredPosition = pauseButtonPosition;
         menuPanel.localScale = Vector3.zero;
 
         infoPanel.SetActive(false);
+
+        // Game starts normally
+        Time.timeScale = 1f;
     }
 
     public void ToggleInfo()
@@ -53,6 +54,7 @@ public class InfoPanelController : MonoBehaviour
         }
     }
 
+    // OPEN PAUSE MENU
     public void OpenMenu()
     {
         if (isAnimating)
@@ -69,6 +71,7 @@ public class InfoPanelController : MonoBehaviour
         StartCoroutine(AnimateOpen());
     }
 
+    // CLOSE PAUSE MENU AND RESUME GAME
     public void CloseMenu()
     {
         if (isAnimating)
@@ -77,7 +80,20 @@ public class InfoPanelController : MonoBehaviour
         isOpen = false;
         isAnimating = true;
 
-        StartCoroutine(AnimateClose());
+        StartCoroutine(AnimateClose(true));
+    }
+
+    // CLOSE PAUSE MENU BUT KEEP GAME PAUSED
+    // Used when opening Settings
+    public void CloseMenuForSettings()
+    {
+        if (isAnimating)
+            return;
+
+        isOpen = false;
+        isAnimating = true;
+
+        StartCoroutine(AnimateClose(false));
     }
 
     private IEnumerator AnimateOpen()
@@ -95,8 +111,6 @@ public class InfoPanelController : MonoBehaviour
             elapsed += Time.unscaledDeltaTime;
 
             float t = elapsed / animationDuration;
-
-            // Smooth animation
             t = Mathf.SmoothStep(0f, 1f, t);
 
             menuPanel.anchoredPosition = Vector2.Lerp(
@@ -114,14 +128,13 @@ public class InfoPanelController : MonoBehaviour
             yield return null;
         }
 
-        // Make sure we finish at the exact values
         menuPanel.anchoredPosition = endPosition;
         menuPanel.localScale = menuNormalScale;
 
         isAnimating = false;
     }
 
-    private IEnumerator AnimateClose()
+    private IEnumerator AnimateClose(bool resumeGame)
     {
         float elapsed = 0f;
 
@@ -136,8 +149,6 @@ public class InfoPanelController : MonoBehaviour
             elapsed += Time.unscaledDeltaTime;
 
             float t = elapsed / animationDuration;
-
-            // Smooth animation
             t = Mathf.SmoothStep(0f, 1f, t);
 
             menuPanel.anchoredPosition = Vector2.Lerp(
@@ -160,8 +171,16 @@ public class InfoPanelController : MonoBehaviour
 
         infoPanel.SetActive(false);
 
-        // Resume the game
-        Time.timeScale = 1f;
+        if (resumeGame)
+        {
+            // Continue playing
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            // Going to settings, so remain paused
+            Time.timeScale = 0f;
+        }
 
         isAnimating = false;
     }
